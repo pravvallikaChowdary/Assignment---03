@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle Text Example</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b); 
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .container {
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            width: 300px;
+        }
+
+        #text {
+            font-size: 36px;
+            color: #000000;
+            transition: color 0.3s ease;
+        }
+
+        .container.active #text {
+            color: #f1c40f; 
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 18px;
+            color: #ffffff;
+            background-color: #28a745;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        button:hover {
+            background-color: #218838; 
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="container">
+        <p id="text">Initial Text</p>
+    </div>
+    <button id="button" onclick="toggle()">Click Me</button>
+
+    <script>
+        let toggled = false;
+
+        function toggle() {
+            const button = document.getElementById('button');
+            const container = document.getElementById('container');
+            const text = document.getElementById('text');
+
+            if (toggled) {
+                button.textContent = 'Click Me';
+                container.classList.remove('active');
+                text.textContent = 'Initial Text';
+            } else {
+                button.textContent = 'Click Again';
+                container.classList.add('active');
+                text.textContent = 'Changed Text';
+            }
+
+            toggled = !toggled;
+        }
+    </script>
+</body>
+</html>
